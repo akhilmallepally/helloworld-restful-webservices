@@ -1,4 +1,4 @@
-package com.restapidemo.controller;
+package com.restapidemo.ui.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.restapidemo.ui.model.response.UserRest;
 
 @RestController
 @RequestMapping("users")
@@ -21,8 +23,14 @@ public class UserController {
 	}
 
 	@GetMapping(path="/{userId}")
-	public String getUser(@PathVariable int userId) {
-		return "get user with userId "+userId;
+	public UserRest getUser(@PathVariable String userId) {
+		UserRest returnValue = new UserRest();
+		returnValue.setEmail("mallepallyakhil@gmail.com");
+		returnValue.setFirstName("Akhil");
+		returnValue.setLastName("Mallepally");
+		
+		return returnValue;
+		
 	}
 	
 	@PostMapping
