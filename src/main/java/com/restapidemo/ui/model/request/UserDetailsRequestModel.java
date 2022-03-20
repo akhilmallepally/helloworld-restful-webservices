@@ -1,10 +1,20 @@
 package com.restapidemo.ui.model.request;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class UserDetailsRequestModel {
 
+	@NotNull(message="first name cannot be null")
 	private String firstName;
+	@NotNull(message="last name cannot be null")
 	private String lastName;
+	@NotNull(message="email cannot be null")
+	@Email
 	private String email;
+	@NotNull(message="password cannot be null")
+	@Size(min=8,max=20,message="Length of password must be between 8 and 20")
 	private String password;
 	
 	public String getFirstName() {

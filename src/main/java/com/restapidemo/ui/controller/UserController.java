@@ -1,5 +1,7 @@
 package com.restapidemo.ui.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +42,7 @@ public class UserController {
 	@PostMapping(consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
 			produces= {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
 	
-	public ResponseEntity<UserDetailsRequestModel> createUser(@RequestBody UserDetailsRequestModel userDetails) {
+	public ResponseEntity<UserDetailsRequestModel> createUser(@Valid @RequestBody UserDetailsRequestModel userDetails) {
 		UserDetailsRequestModel returnValue = new UserDetailsRequestModel();
 		returnValue.setEmail(userDetails.getEmail());
 		returnValue.setFirstName(userDetails.getFirstName());
